@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CroweHorwath.Models;
+using System;
 
 namespace CroweHorwath
 {
@@ -6,7 +7,8 @@ namespace CroweHorwath
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            var howdyWorld = new HelloWorld();
+            Console.WriteLine(howdyWorld.Value);
             Console.ReadKey();
         }
     }
