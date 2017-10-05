@@ -1,4 +1,4 @@
-﻿using CroweHorwath.Models;
+﻿using CroweHorwath.Controllers;
 using System;
 
 namespace CroweHorwath
@@ -7,8 +7,8 @@ namespace CroweHorwath
     {
         static void Main(string[] args)
         {
-            var howdyWorld = new HelloWorld();
-            Console.WriteLine(howdyWorld.Value);
+            var howdyWorld = new HelloWorldAPIController();
+            Console.WriteLine(howdyWorld.GetHelloWorld("Crowe Horwath").Value);
             Console.ReadKey();
         }
     }

@@ -15,7 +15,7 @@ namespace CroweHorwath.Controllers
             HelloWorld = new HelloWorld();
         }
 
-        public HelloWorld GetHelloWorld()
+        public virtual HelloWorld GetHelloWorld()
         {
             return HelloWorld;
         }
