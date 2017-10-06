@@ -1,7 +1,6 @@
-﻿using System.Web.Mvc;
+﻿using CroweHorwathWebAPI.Controllers;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using CroweHorwathWebAPI;
-using CroweHorwathWebAPI.Controllers;
+using System.Web.Mvc;
 
 namespace CroweHorwathWebAPI.Tests.Controllers
 {

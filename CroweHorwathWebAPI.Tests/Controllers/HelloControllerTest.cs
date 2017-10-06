@@ -1,10 +1,5 @@
-﻿using System;
+﻿using CroweHorwath.Controllers;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using CroweHorwathWebAPI.Controllers;
-using System.Configuration;
-using System.Net;
-using System.Text;
-using System.IO;
 
 namespace CroweHorwathWebAPI.Tests.Controllers
 {
@@ -12,45 +7,15 @@ namespace CroweHorwathWebAPI.Tests.Controllers
     public class HelloControllerTest
     {
         [TestMethod]
-        public void Post()
+        public void GetHelloWorld()
         {
-            // Arrange
-            HelloController controller = new HelloController();
+            var helloWorldController = new HelloWorldController();
 
-            // Act
-            var result = controller.Post("World");
+            var HelloWorld = helloWorldController.GetHelloWorld();
 
-            // Assert
-            StringAssert.Equals("Hello World", result);
+            Assert.IsNotNull(HelloWorld);
+
+            StringAssert.Equals("Hello World", HelloWorld.Value);
         }
-
-        [TestMethod]
-        public void PostAPI()
-        {
-            var api = ConfigurationManager.AppSettings["HelloAPI"]
-                ?? "http://localhost/api/Hello";
-            var webrequest = (HttpWebRequest)WebRequest.Create(api);
-            var value = "\"Crowe Horwath\"";
-            webrequest.Method = "POST";
-            webrequest.Accept = "application/json";
-            webrequest.ContentType = "text/json";
-            webrequest.ContentLength = value.Length;
-            using (var stream = webrequest.GetRequestStream())
-            {
-                var encoding = new ASCIIEncoding();
-                stream.Write(encoding.GetBytes(value), 0, value.Length);
-                stream.Close();
-            }
-            var response = (HttpWebResponse)webrequest.GetResponse();
-            var enc = Encoding.GetEncoding("utf-8");
-            using (var reader = new StreamReader(response.GetResponseStream(), enc))
-            {
-                var result = reader.ReadToEnd();
-                // Assert
-                StringAssert.Equals("Hello Crowe Horwath", result);
-            }
-            response.Close();
-        }
-
     }
 }
